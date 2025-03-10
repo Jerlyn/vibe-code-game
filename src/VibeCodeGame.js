@@ -113,8 +113,12 @@ const VibeCodeGame = () => {
   };
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-center mb-4 text-purple-800">Vibe Code Decoder</h1>
+    <div className="max-w-md mx-auto bg-white p-4">
+      <h1 className="text-center text-2xl font-bold mb-2">Vibe Code Decoder</h1>
+      
+      <div className="text-center mb-4">
+        Score: {score}
+      </div>
       
       {gameState === 'complete' ? (
         <div className="text-center">
@@ -130,52 +134,53 @@ const VibeCodeGame = () => {
           <p className="mb-6">Understanding vibe codes helps with social integration, but remember: explicit communication creates more accessible environments for everyone.</p>
           <button 
             onClick={resetGame}
-            className="bg-purple-600 text-white py-2 px-6 rounded-lg hover:bg-purple-700 transition"
+            className="bg-indigo-600 text-white py-2 px-6 rounded hover:bg-indigo-700 transition"
           >
             Play Again
           </button>
         </div>
       ) : (
         <div>
-          <div className="bg-purple-100 p-4 rounded-lg mb-4">
-            <div className="text-sm font-semibold text-purple-800 uppercase tracking-wider mb-1">{currentQuestion.setting}</div>
-            <p className="mb-3">{currentQuestion.description}</p>
-            <p className="font-bold">{currentQuestion.question}</p>
+          <div className="mb-6">
+            <div className="text-center mb-2">Question {currentScenario + 1} of {scenarios.length}</div>
+            <p className="italic mb-4">{currentQuestion.description}</p>
+            <p className="font-bold mb-4">{currentQuestion.question}</p>
           </div>
           
           {gameState === 'playing' ? (
-            <div className="space-y-3">
+            <div className="space-y-2">
               {currentQuestion.choices.map((choice, index) => (
                 <button
                   key={index}
                   onClick={() => handleChoiceSelection(index)}
-                  className="w-full text-left p-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+                  className="w-full text-center p-3 bg-indigo-100 rounded-md hover:bg-indigo-200 transition"
                 >
                   {choice.text}
                 </button>
               ))}
             </div>
           ) : (
-            <div className="mb-6">
-              <div className={`p-4 rounded-lg mb-4 ${currentQuestion.choices[selectedChoice].correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-red-100 border-red-300 text-red-800'}`}>
-                <p className="font-bold mb-2">
-                  {currentQuestion.choices[selectedChoice].correct ? '✓ Correct!' : '✗ Not quite!'}
-                </p>
-                <p>{currentQuestion.choices[selectedChoice].feedback}</p>
-              </div>
+            <div>
+              {currentQuestion.choices[selectedChoice].correct ? (
+                <div className="bg-purple-700 text-white p-4 rounded-md mb-4">
+                  <p className="font-bold mb-2">✓ Correct!</p>
+                  <p>{currentQuestion.choices[selectedChoice].feedback}</p>
+                </div>
+              ) : (
+                <div className="bg-red-600 text-white p-4 rounded-md mb-4">
+                  <p className="font-bold mb-2">✗ Not quite!</p>
+                  <p>{currentQuestion.choices[selectedChoice].feedback}</p>
+                </div>
+              )}
+              
               <button
                 onClick={handleContinue}
-                className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition"
+                className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900 transition"
               >
                 Continue
               </button>
             </div>
           )}
-          
-          <div className="mt-4 flex justify-between text-sm">
-            <div>Question {currentScenario + 1} of {scenarios.length}</div>
-            <div>Score: {score}</div>
-          </div>
         </div>
       )}
     </div>
