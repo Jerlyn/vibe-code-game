@@ -1,0 +1,74 @@
+/* VibeCodeGame.css */
+.vibe-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .vibe-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .vibe-score {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .vibe-question {
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  
+  .vibe-prompt {
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .vibe-option {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background-color: #c7d2fe; /* Indigo-100 */
+    border-radius: 6px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .vibe-option:hover {
+    background-color: #a5b4fc; /* Indigo-200 */
+  }
+  
+  .vibe-correct {
+    background-color: #6d28d9; /* Purple-700 */
+    color: white;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  
+  .vibe-incorrect {
+    background-color: #dc2626; /* Red-600 */
+    color: white;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  
+  .vibe-button {
+    width: 100%;
+    background-color: #1f2937; /* Gray-800 */
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .vibe-button:hover {
+    background-color: #111827; /* Gray-900 */
+  }
